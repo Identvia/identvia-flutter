@@ -97,7 +97,7 @@ class SignInWithIdentviaButton extends StatelessWidget {
         style: OutlinedButton.styleFrom(
           backgroundColor: bg,
           foregroundColor: fg,
-          disabledBackgroundColor: bg.withValues(alpha: 0.5),
+          disabledBackgroundColor: bg.withAlpha(0x80),
           side: BorderSide(color: border),
           padding: EdgeInsets.symmetric(horizontal: px),
           shape: RoundedRectangleBorder(
