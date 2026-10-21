@@ -1,0 +1,25 @@
+name: identvia
+description: Sign in with Identvia for Flutter. OpenID Connect with PKCE in the system browser (ASWebAuthenticationSession / Custom Tabs), secure token storage, refresh-token rotation and a branded button.
+version: 0.1.0
+homepage: https://id.identvia.com/developers/docs/flutter
+repository: https://github.com/identvia/identvia-flutter
+issue_tracker: https://github.com/identvia/identvia-flutter/issues
+topics: [authentication, oidc, oauth2, pkce, sso]
+
+environment:
+  sdk: ">=3.4.0 <4.0.0"
+  flutter: ">=3.22.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  crypto: ^3.0.3
+  flutter_secure_storage: ^9.2.2
+  flutter_web_auth_2: ^4.0.1
+  http: ^1.2.2
+  pointycastle: ^3.9.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
