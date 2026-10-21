@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.1 (2026-10-21)
+
+- `SignInWithIdentviaButton`: the disabled colour uses `withAlpha` instead of `withValues`, so the package analyzes and builds on Flutter 3.24 again (`withValues` needs 3.27+).
+- CI: matrix fail-fast is off. `.gitignore` now excludes nested build output, APK/AAB files and local live-test state.
+
 ## 0.1.0 — 2026-10-21
 
 - First release.
