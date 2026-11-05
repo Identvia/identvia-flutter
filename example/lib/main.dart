@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:identvia/identvia.dart';
 
-// Register a *public* (no secret) client at https://identvia.com/developers with this redirect URI.
+// Register a Native & desktop (public, no secret) client at https://identvia.com/developers with this redirect URI.
 // Never put a client secret in a mobile app.
 final identvia = IdentviaClient(
   clientId: const String.fromEnvironment('IDENTVIA_CLIENT_ID',

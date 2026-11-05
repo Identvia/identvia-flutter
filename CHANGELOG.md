@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.2 (2026-11-05)
+
+- Example: register the redirect on a **Native & desktop** portal client.
+
 ## 0.1.1 (2026-10-21)
 
 - `SignInWithIdentviaButton`: the disabled colour uses `withAlpha` instead of `withValues`, so the package analyzes and builds on Flutter 3.24 again (`withValues` needs 3.27+).
