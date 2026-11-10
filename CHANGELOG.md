@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.3 (2026-11-09)
+
+- First release on pub.dev, under the verified publisher identvia.com. Later versions are published from GitHub Actions (`publish.yml`) with pub.dev automated publishing (OIDC).
+- Package metadata: homepage `https://identvia.com` and repository `github.com/Identvia/identvia-flutter`. No code changes.
+
 ## 0.1.2 (2026-11-05)
 
 - Example: register the redirect on a **Native & desktop** portal client.

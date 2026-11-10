@@ -1,0 +1,41 @@
+# Publishes the `identvia` package to pub.dev when a version tag (v1.2.3) is pushed.
+#
+# Auth: pub.dev automated publishing (GitHub OIDC, no stored secret). pub.dev -> identvia -> Admin ->
+# Automated publishing: enable "Publishing from GitHub Actions", repository "Identvia/identvia-flutter",
+# tag pattern "v{{version}}", and require the GitHub Actions environment "pub.dev".
+# pub.dev only accepts runs triggered by a tag push, and pubspec.yaml's version must equal the tag.
+# The very first version must be published by hand (`flutter pub publish`); pub.dev can't automate new packages.
+name: Publish to pub.dev
+on:
+  push:
+    tags: ['v[0-9]+.[0-9]+.[0-9]+'] # tag pattern on pub.dev: v{{version}}
+permissions: { contents: read }
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment: pub.dev
+    permissions:
+      contents: read
+      id-token: write # pub.dev automated publishing (OIDC)
+    steps:
+      - uses: actions/checkout@v4
+      # setup-dart exchanges the GitHub OIDC token for a pub.dev token; flutter-action then provides the Flutter SDK.
+      - uses: dart-lang/setup-dart@v1
+      - uses: subosito/flutter-action@v2
+        with: { channel: stable, cache: true }
+      - name: Tag matches pubspec version
+        run: |
+          v=$(grep -E '^version:' pubspec.yaml | awk '{print $2}')
+          [ "v$v" = "$GITHUB_REF_NAME" ] || { echo "::error::pubspec.yaml is $v but the tag is $GITHUB_REF_NAME"; exit 1; }
+      - run: flutter pub get
+      - run: flutter analyze
+      - run: flutter test
+      - name: Skip if this version is already on pub.dev
+        id: exists
+        run: |
+          v=$(grep -E '^version:' pubspec.yaml | awk '{print $2}')
+          code=$(curl -s -o /dev/null -w '%{http_code}' "https://pub.dev/api/packages/identvia/versions/$v")
+          echo "published=$([ "$code" = 200 ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+      - if: steps.exists.outputs.published != 'true'
+        run: flutter pub publish --force

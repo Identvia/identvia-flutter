@@ -1,5 +1,9 @@
 # identvia (Flutter)
 
+[![pub package](https://img.shields.io/pub/v/identvia.svg)](https://pub.dev/packages/identvia)
+[![CI](https://github.com/Identvia/identvia-flutter/actions/workflows/ci.yml/badge.svg)](https://github.com/Identvia/identvia-flutter/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Identvia/identvia-flutter/blob/main/LICENSE)
+
 Sign in with [Identvia](https://identvia.com) in Flutter apps: OpenID Connect + PKCE in the **system browser**, secure token storage, refresh-token rotation and a branded button.
 
 - iOS 12+ / macOS (ASWebAuthenticationSession), Android (Chrome Custom Tabs), Windows/Linux (system browser + loopback).
@@ -14,7 +18,7 @@ flutter pub add identvia
 
 ## 1. Register your app
 
-At <https://identvia.com/developers>, create a **public** client (no secret) and register a redirect URI. Two options:
+At <https://id.identvia.com/developers>, create a **public** client (no secret) and register a redirect URI. Two options:
 
 | Redirect | Notes |
 |---|---|
